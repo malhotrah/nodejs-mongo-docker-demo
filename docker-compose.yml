@@ -1,0 +1,23 @@
+version: '3'
+services:
+  node:
+    restart: always
+    build: .
+    ports:
+      - 3002:3000
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    environment:
+      WAIT_HOSTS: mongo:27017  
+    volumes:
+      - ./:/code
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+volumes:
+ mongodb:
