@@ -9,9 +9,7 @@ services:
     depends_on:
       - mongo
     environment:
-      WAIT_HOSTS: mongo:27017  
-    volumes:
-      - ./:/code
+      WAIT_HOSTS: mongo:27017
   mongo:
     image: mongo
     ports:
